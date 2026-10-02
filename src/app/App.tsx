@@ -35,7 +35,7 @@ const profile = {
   email: "janardhanaabby04@gmail.com",
   linkedin: "https://linkedin.com/in/janardhanaabby",
   github: "https://github.com/saintbobi",
-  cv: "public/cv.pdf",
+  cv: "/cv.pdf",
 }
 
 const projects = [
@@ -1077,3 +1077,4 @@ export default function App() {
     </div>
   )
 }
+
