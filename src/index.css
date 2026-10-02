@@ -1,0 +1,55 @@
+@import "./styles/fonts.css";
+@import "tailwindcss";
+@import "./styles/theme.css";
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  body { font-family: var(--font-sans); }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled) { cursor: pointer; }
+  ::selection { background: #f6df62; color: #202019; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 5px; }
+  dialog::backdrop { background: #11111170; backdrop-filter: blur(6px); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@keyframes status-breathe {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.85);
+    box-shadow: 0 0 4px 1px rgb(34 197 94 / 35%);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+    box-shadow: 0 0 10px 3px rgb(34 197 94 / 70%);
+  }
+}
+
+.green-status-dot {
+  animation: status-breathe 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .green-status-dot { animation: none; }
+}
+
+/* Sembunyikan elemen dan geser sedikit ke bawah sebagai posisi awal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+/* Munculkan elemen dan kembalikan ke posisi semula saat class ini ditambahkan oleh script */
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal { opacity: 1; transform: none; transition: none; }
+}
